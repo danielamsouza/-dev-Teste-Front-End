@@ -6,20 +6,34 @@ function redenrizarTabela(){
     let corpoTabela = document.getElementById("corpo-tabela");
     corpoTabela.innerHTML = "";
 
-    alunos.forEach(aluno => {
-        let cursoAluno = cursos.find(curso => curso.id == aluno.degreeID)
-    })
+    alunos.forEach(function(aluno){
+        let cursoAluno = cursos.find(function(curso){
+            return curso.id === aluno.degreeId;
+        });
+        let turmaAluno = turmas[aluno.classId - 1];
+
+        let linhaTabela = `
+            <tr>
+                <td>${aluno.name}</td>
+                <td>${cursoAluno ? cursoAluno.name : 'Sem curso'}</td>
+                <td>${turmaAluno ? turmaAluno.name : 'Sem turma'}</td>
+            </tr>
+        `;
+        corpoTabela.innerHTML += linhaTabela;
+    });
 }
 
 async function buscarDadosAlunos(){
     try{
         let reStudents = await fetch("./data/students.json");
-        let reDegrees = await fetch(".data/degrees.json");
-        let reClasses = await fetch(".data/classes.json");
+        let reDegrees = await fetch("./data/degrees.json");
+        let reClasses = await fetch("./data/classes.json");
         
         alunos = await reStudents.json();
         cursos = await reDegrees.json();
-        turmas = await reClasses.json();
+
+        let dadosTurmas = await reClasses.json();
+        turmas = dadosTurmas.classes;
 
         console.log("Dados carregados com sucesso!!");
 
