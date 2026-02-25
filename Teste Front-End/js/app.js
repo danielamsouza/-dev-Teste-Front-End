@@ -21,7 +21,7 @@ function redenrizarTabela(){
         `;
         corpoTabela.innerHTML += linhaTabela;
     });
-}
+};
 
 async function buscarDadosAlunos(){
     try{
@@ -41,6 +41,6 @@ async function buscarDadosAlunos(){
     } catch (erro){
         console.error('Erro em buscar os dados:', erro);
     }
-}
+};
 
 buscarDadosAlunos();
