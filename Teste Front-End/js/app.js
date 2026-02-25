@@ -1,6 +1,7 @@
 let alunos = [];
 let cursos = [];
 let turmas = [];
+let graficoSalvo = null;
 
 function renderizarTabela(listaAunos){
     let corpoTabela = document.getElementById("corpo-tabela");
@@ -41,6 +42,7 @@ async function buscarDadosAlunos(){
 
         renderizarTabela(alunos);
         preencherFiltros();
+        atualizarGrafico();
 
         document.getElementById("filtro-curso").addEventListener("change", filtrarTabela);
         document.getElementById("filtro-turma").addEventListener("change", filtrarTabela);
@@ -101,5 +103,60 @@ function editarAluno(idAluno){
     }
 
     filtrarTabela();
+}
+
+function gerarAlunos(){
+    for (let i = 0; i < 300; i++){
+        let posicaoCursoSorteado = Math.floor(Math.random() * cursos.length);
+        let cursoSorteado = cursos[posicaoCursoSorteado];
+
+        let turmaSorteada = Math.floor(Math.random() * turmas.length) + 1;
+
+        let novoAluno ={
+            id: alunos.length + 1,
+            ra: Math.floor(Math.random() * 900000) + 10000,
+            name: "Aluno Gerado " + (alunos.length + 1),
+            degreeId: cursoSorteado.id,
+            classId: turmaSorteada
+        };
+
+        alunos.push(novoAluno);
+    }
+    filtrarTabela();
+    atualizarGrafico();
+}
+
+function atualizarGrafico(){
+    let nomesCursos = [];
+    let quantidadeAlunos = [];
+
+    cursos.forEach(function(curso){
+        nomesCursos.push(curso.name);
+        let alunosNoCurso = alunos.filter(function(aluno){
+            return aluno.degreeId === curso.id;
+        });
+
+        quantidadeAlunos.push(alunosNoCurso.length);
+
+    });
+
+    if(graficoSalvo !== null){
+        graficoSalvo.destroy();
+    }
+
+    let telaGrafico = document.getElementById("grafico");
+    graficoSalvo = new Chart(telaGrafico, {
+        type: 'bar',
+        data:{
+            labels: nomesCursos,
+            datasets: [{
+                label: 'Quantidade de Alunos por Curso',
+                data: quantidadeAlunos,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
 }
 buscarDadosAlunos();
