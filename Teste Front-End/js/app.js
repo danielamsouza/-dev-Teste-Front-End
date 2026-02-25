@@ -2,7 +2,7 @@ let alunos = [];
 let cursos = [];
 let turmas = [];
 
-function redenrizarTabela(listaAunos){
+function renderizarTabela(listaAunos){
     let corpoTabela = document.getElementById("corpo-tabela");
     corpoTabela.innerHTML = "";
 
@@ -17,6 +17,8 @@ function redenrizarTabela(listaAunos){
                 <td>${aluno.name}</td>
                 <td>${cursoAluno ? cursoAluno.name : 'Sem curso'}</td>
                 <td>${turmaAluno ? turmaAluno.name : 'Sem turma'}</td>
+                <td>
+                    <button onclick="editarAluno(${aluno.id})">Editar</button>
             </tr>
         `;
         corpoTabela.innerHTML += linhaTabela;
@@ -37,7 +39,7 @@ async function buscarDadosAlunos(){
 
         console.log("Dados carregados com sucesso!!");
 
-        redenrizarTabela(alunos);
+        renderizarTabela(alunos);
         preencherFiltros();
 
         document.getElementById("filtro-curso").addEventListener("change", filtrarTabela);
@@ -75,7 +77,29 @@ function filtrarTabela(){
         return cursoCorrrespondente && turmaCorrespondente;
     });
 
-    redenrizarTabela(alunosFiltrados);
+    renderizarTabela(alunosFiltrados);
 }
 
+function editarAluno(idAluno){
+    let alunoSelecionado = alunos.find(function(aluno){
+        return aluno.id === idAluno;
+    });
+
+    if(!alunoSelecionado){
+        console.error("Aluno não encontrado para edição.");
+        return;
+    }
+
+    let novoNome = prompt("Digite o novo nome do aluno:", alunoSelecionado.name);
+    let novaTurma = prompt("Digite a nova turma do aluno (Ex: 1 para A, 2 para B):", alunoSelecionado.classId);
+
+    if(novoNome !== null && novoNome !== ""){
+        alunoSelecionado.name = novoNome;
+    }
+    if(novaTurma !== null && novaTurma !== ""){
+        alunoSelecionado.classId = parseInt(novaTurma);
+    }
+
+    filtrarTabela();
+}
 buscarDadosAlunos();
