@@ -38,9 +38,27 @@ async function buscarDadosAlunos(){
         console.log("Dados carregados com sucesso!!");
 
         redenrizarTabela();
+        preencherFiltros();
     } catch (erro){
         console.error('Erro em buscar os dados:', erro);
     }
+};
+
+function preencherFiltros(){
+    let selectCurso = document.getElementById("filtro-curso");
+    let selectTurma = document.getElementById("filtro-turma");
+
+    cursos.forEach(function(curso){
+        let opcao = `<option value="${curso.id}">${curso.name}</option>`;
+        selectCurso.innerHTML += opcao;
+    });
+
+    turmas.forEach(function(turma, posicao){
+        let idTurma = posicao + 1;
+
+        let opcao = `<option value="${idTurma}">${turma.name}</option>`;
+        selectTurma.innerHTML += opcao;
+    });
 };
 
 buscarDadosAlunos();
