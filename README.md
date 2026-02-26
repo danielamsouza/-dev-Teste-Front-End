@@ -5,7 +5,7 @@ Este projeto foi desenvolvido como resolução de um desafio técnico para a vag
 
 O objetivo principal da aplicação é demonstrar o domínio sobre o consumo assíncrono de dados, manipulação intensiva do Document Object Model (DOM), mutabilidade de estado em memória e integração com bibliotecas de terceiros via CDN.
 
-## 🚀 Funcionalidades Implementadas (Tela 1)
+## 🚀 Funcionalidades Implementadas
 
 - **Consumo de API Simulado:** Leitura e *parsing* assíncrono de arquivos `.json` locais utilizando a *Fetch API* (`async/await`).
 - **Renderização Dinâmica:** Construção de tabelas e contêineres de seleção (`<select>`) injetados dinamicamente no DOM em tempo de execução.
@@ -22,13 +22,6 @@ O objetivo principal da aplicação é demonstrar o domínio sobre o consumo ass
   - **Template Literals:** Para interpolação segura de strings e marcação HTML.
   - **Event-Driven Architecture:** Gerenciamento de interações do usuário através de `Event Listeners` estritos.
 - **Chart.js (v4.x):** Renderização visual via Web API (Canvas 2D Context).
-
-## 🧠 Foco Arquitetural e Decisões Técnicas
-
-Durante o desenvolvimento, algumas decisões arquiteturais foram tomadas para garantir a estabilidade da aplicação:
-1. **Otimização de DOM:** A manipulação do `.innerHTML` foi contida dentro de lógicas restritas para evitar operações de *Reflow/Repaint* desnecessárias na *Main Thread*.
-2. **Prevenção de Memory Leaks:** Implementação do método `.destroy()` na instância do Chart.js para limpeza de coletores de lixo (Garbage Collection) antes da sobrescrita de novos gráficos na mesma tag `<canvas>`.
-3. **Segurança de Tipagem e Coerção:** Uso do `.toString()` e `parseInt()` nas rotinas de filtragem e edição para assegurar o funcionamento da Igualdade Estrita (`===`) do JavaScript contra os retornos do DOM.
 
 ## ⚙️ Como Executar o Projeto Localmente
 
