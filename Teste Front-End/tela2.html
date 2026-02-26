@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <metaname="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Painel de professores</title>
+    </head>
+    <body>
+        <h1>Painel de professores</h1>
+
+        <div style="margin-bottom: 20px;">
+            <label for="filtro-curso">Filtrar por curso:</label>
+            <select name="" id="filtro-curso">
+                <option value="todos">Todos os cursos</option>
+            </select>
+            
+            <label for="filtro-materia">Filtrar por materia:</label>
+            <select name="" id="filtro-materia">
+                <option value="todos">Todas as matérias</option>
+            </select>
+            
+        </div>
+
+        <table border="1" id="tabela-professores">
+            <thead>
+                <tr>
+                    <th>Nome do professor</th>
+                    <th>Disciplina</th>
+                    <th>Cursos</th>
+                    <th>Turmas</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="corpo-tabela">
+            </tbody>
+        </table>
+        <div>
+            <h2>Alunos da turma selecionada</h2>
+            <ul id="lista-alunos"></ul>
+        </div>
+
+        <script src="./js/app_tela2.js"></script>
+    </body>
+</html>
