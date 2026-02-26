@@ -34,7 +34,7 @@ Durante o desenvolvimento, algumas decisões arquiteturais foram tomadas para ga
 
 Devido à política de segurança CORS (Cross-Origin Resource Sharing) dos navegadores modernos, a `Fetch API` não pode consumir arquivos JSON locais através do protocolo `file://`. É necessário rodar a aplicação através de um servidor local.
 
-1. Clone este repositório:[https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+1. Clone este repositório:[https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)](https://github.com/danielamsouza/-dev-Teste-Front-End)
 2. Abra a pasta do projeto no seu editor de código (ex: VS Code).
 3. Utilize uma extensão como o **Live Server** para emular um servidor HTTP local na porta `5500`.
 4. A aplicação estará disponível em: `http://127.0.0.1:5500/index.html`
