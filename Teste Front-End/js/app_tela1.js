@@ -3,11 +3,11 @@ let cursos = [];
 let turmas = [];
 let graficoSalvo = null;
 
-function renderizarTabela(listaAunos){
+function renderizarTabela(listaAlunos){
     let corpoTabela = document.getElementById("corpo-tabela");
     corpoTabela.innerHTML = "";
 
-    listaAunos.forEach(function(aluno){
+    listaAlunos.forEach(function(aluno){
         let cursoAluno = cursos.find(function(curso){
             return curso.id === aluno.degreeId;
         });
