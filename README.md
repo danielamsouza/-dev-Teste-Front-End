@@ -32,7 +32,7 @@ Devido à política de segurança CORS (Cross-Origin Resource Sharing) dos naveg
 3. Utilize uma extensão como o **Live Server** para emular um servidor HTTP local na porta `5500`.
 4. A aplicação estará disponível em: `http://127.0.0.1:5500/index.html`
 
-## 👨‍💻 Autor
+## Autor
 
 **Daniel Augusto**
 Desenvolvedor focado em Engenharia Front-End e Análise de Sistemas.
